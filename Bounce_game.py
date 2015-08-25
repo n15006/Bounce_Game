@@ -55,23 +55,23 @@ class Ball:
             block_pos = self.canvas.coords(block.id)
             #circle_collision check
             if point_collision(block_pos, pos):
-                collision_type |= 300
+                collision_type |= 3
             #top_collision check
             if pos[2] >= block_pos[0] and pos[0] <= block_pos[2] \
                and pos[3] >= block_pos[1] and pos[3] < block_pos[3]:
-                collision_type |= 100
+                collision_type |= 1
             #bottom check
             if pos[2] >= block_pos[0] and pos[0] <= block_pos[2] \
                and pos[1] > block_pos[1] and pos[1] <= block_pos[3]:
-                collision_type |= 100
+                collision_type |= 1
             #left check
             if pos[3] >= block_pos[1] and pos[1] <= block_pos[3] \
                and pos[2] >= block_pos[0] and pos[2] <= block_pos[2]:
-                collision_type |= 200
+                collision_type |= 2
             #right check
             if pos[3] >= block_pos[1] and pos[1] <= block_pos[3] \
                and pos[0] > block_pos[0] and pos[0] <= block_pos[2]:
-                collision_type |= 200
+                collision_type |=2
 
             if collision_type != 0:
                 return (block, collision_type)
@@ -134,8 +134,8 @@ class Block:
         self.canvas = canvas
         self.pos_x = x
         self.pos_y = y
-        self.id = canvas.create_rectangle(0, 0, 30, 30, fill=color)
-        self.canvas.move(self.id, 20 + self.pos_x * 50,
+        self.id = canvas.create_rectangle(0, 0, 25, 20, fill=color)
+        self.canvas.move(self.id, 15 + self.pos_x * 50,
                          10 + self.pos_y * 20)
         
     def delete(self):
